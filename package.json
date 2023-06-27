@@ -16,16 +16,23 @@
   },
   "one-amex": {
     "app": {
-      "compatibility": "^6.4.2"
+      "compatibility": "^5.0.0"
     },
     "runner": {
-      "dockerImage": "oneamex/one-app-dev:latest",
-      "moduleMapUrl": "https://module-map.vercel.app/module-map.json",
+      "dockerImage": "oneamex/one-app-dev:5",
+      "moduleMapUrl": "https://cdn.jsdelivr.net/gh/ipreencekmr/CDN@main/nasa/static/module-map.json",
       "modules": [
         "."
       ],
       "rootModuleName": "nasa-root",
-      "parrotMiddleware": "./dev.middleware.js"
+      "parrotMiddleware": "./dev.middleware.js",
+      "envVars": {
+        "ONE_CONFIG_ENV": "development",
+        "NODE_ENV": "development",
+        "HOLOCRON_MODULE_MAP_URL": "https://cdn.jsdelivr.net/gh/ipreencekmr/CDN@main/nasa/static/module-map.json",
+        "ONE_CLIENT_LOCALE_FILENAME": "integration",
+        "ONE_CLIENT_CDN_URL": "https://cdn.jsdelivr.net/gh/ipreencekmr/CDN@main/nasa/"
+      }
     },
     "bundler": {
       "requiredExternals": [
@@ -42,7 +49,11 @@
     "prop-types": "^15.7.2",
     "react-intl": "^5.10.6",
     "react-redux": "^7.2.2",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.5"
   },
   "devDependencies": {
     "@americanexpress/one-app-bundler": "^6.10.0",
@@ -59,7 +70,9 @@
     "glob": "^7.1.6",
     "@babel/polyfill": "^7.12.1",
     "jest-json-schema": "^2.1.0",
-    "parrot-middleware": "^4.1.1"
+    "parrot-middleware": "^4.1.1",
+    "node-fetch": "^2.6.11",
+    "fs-extra": "^11.1.1"
   },
   "jest": {
     "preset": "amex-jest-preset-react",
