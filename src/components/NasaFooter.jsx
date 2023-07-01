@@ -4,45 +4,58 @@ import { loadLanguagePack, updateLocale } from '@americanexpress/one-app-ducks';
 import { IntlProvider } from 'react-intl';
 import { connect } from 'react-redux';
 import { fromJS } from 'immutable';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary">
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      .
-    </Typography>
-  );
-}
+import { Box, Grid, CssBaseline } from '@mui/material';
+import { Copyright } from './Copyright';
+import { ContactUs } from './ContactUs';
 
 export const NasaFooter = ({ languageData, localeName }) => {
   if (languageData) {
     return (
       <IntlProvider locale={localeName} messages={languageData}>
         <Box
-          component="footer"
           sx={{
-            py: 3,
-            px: 2,
-            mt: 'auto',
-            backgroundColor: (theme) => (theme.palette.mode === 'light'
-              ? theme.palette.grey[200]
-              : theme.palette.grey[800]),
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: '20vh',
           }}
         >
-          <Container maxWidth="sm">
-            <Typography variant="body1">
-              My sticky footer can be found here.
-            </Typography>
-            <Copyright />
-          </Container>
+          <CssBaseline />
+          <Box
+            component="footer"
+            sx={{
+              py: 3,
+              px: 2,
+              mt: 'auto',
+              backgroundColor: (theme) => (theme.palette.mode === 'light'
+                ? theme.palette.grey[200]
+                : theme.palette.grey[800]),
+            }}
+          >
+            <Grid
+              container={true}
+              spacing={2}
+            >
+              <Grid
+                xs={12}
+                container={true}
+                justifyContent="space-between"
+                alignItems="flex-end"
+                flexDirection={{ xs: 'column', sm: 'row' }}
+                sx={{ fontSize: '12px' }}
+              >
+                <Grid
+                  item={true}
+                  xs={8}
+                  sx={{ pl: 2 }}
+                >
+                  <Copyright />
+                </Grid>
+                <Grid item={true} xs={4}>
+                  <ContactUs />
+                </Grid>
+              </Grid>
+            </Grid>
+          </Box>
         </Box>
       </IntlProvider>
     );
