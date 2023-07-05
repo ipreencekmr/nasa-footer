@@ -4,7 +4,9 @@ import { loadLanguagePack, updateLocale } from '@americanexpress/one-app-ducks';
 import { IntlProvider } from 'react-intl';
 import { connect } from 'react-redux';
 import { fromJS } from 'immutable';
-import { Box, Grid, CssBaseline } from '@mui/material';
+import {
+  Box, Grid, CssBaseline, Typography,
+} from '@mui/material';
 import { Copyright } from './Copyright';
 import { ContactUs } from './ContactUs';
 
@@ -23,36 +25,59 @@ export const NasaFooter = ({ languageData, localeName }) => {
           <Box
             component="footer"
             sx={{
-              py: 3,
-              px: 2,
               mt: 'auto',
-              backgroundColor: (theme) => (theme.palette.mode === 'light'
-                ? theme.palette.grey[200]
-                : theme.palette.grey[800]),
+              backgroundColor: '#e2e2e2',
+              width: '100%',
             }}
           >
             <Grid
               container={true}
-              spacing={2}
+              direction="row"
+              justifyContent="space-between"
+              alignItems="flex-end"
             >
               <Grid
+                item={true}
                 xs={12}
-                container={true}
-                justifyContent="space-between"
-                alignItems="flex-end"
-                flexDirection={{ xs: 'column', sm: 'row' }}
-                sx={{ fontSize: '12px' }}
               >
-                <Grid
-                  item={true}
-                  xs={8}
-                  sx={{ pl: 2 }}
+                <Typography
+                  sx={{
+                    padding: '20px 20px 10px 20px;',
+                    'text-align': 'center',
+                    'font-weight': '400',
+                    'font-size': '1rem',
+                    color: '#6f696f',
+                  }}
                 >
-                  <Copyright />
-                </Grid>
-                <Grid item={true} xs={4}>
-                  <ContactUs />
-                </Grid>
+                  MICRO FRONT-END APPLICATION
+                </Typography>
+                <hr />
+              </Grid>
+              <Grid
+                item={true}
+                xs={12}
+                sm={8}
+                md={6}
+              >
+                <ContactUs />
+              </Grid>
+              <Grid
+                item={true}
+                xs={12}
+                sm={4}
+                md={6}
+                textAlign={{
+                  xs: 'left',
+                  sm: 'right',
+                  md: 'right',
+                }}
+                padding={{
+                  xs: '0px 0px 20px 20px;',
+                  sm: '0px 20px 20px 0px;',
+                  md: '0px 20px 20px 0px;',
+                }}
+              >
+                <Copyright />
               </Grid>
             </Grid>
           </Box>
