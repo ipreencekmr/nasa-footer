@@ -22,10 +22,11 @@ describe('Language packs', () => {
     return locales;
   }));
 
+  // eslint-disable-next-line jest/no-done-callback -- desc
   it('should have the correct schema in each copy file', (done) => {
     const failures = [];
     locales.forEach((localeFile) => {
-      // eslint-disable-next-line global-require,import/no-dynamic-require
+      // eslint-disable-next-line global-require,import/no-dynamic-require -- desc
       const copy = require(path.join(localeDir, localeFile));
       try {
         expect(copy).toMatchSchema(schema, localeFile);

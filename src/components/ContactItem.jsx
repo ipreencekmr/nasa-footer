@@ -55,6 +55,6 @@ export const ContactItem = ({ url, type }) => {
 };
 
 ContactItem.propTypes = {
-  url: PropTypes.shape({}).isRequired,
-  type: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  type: PropTypes.number.isRequired,
 };

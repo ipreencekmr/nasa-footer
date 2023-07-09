@@ -122,7 +122,7 @@ describe('NasaFooter should render as expected', () => {
     const fakeStore = {
       dispatch: jest.fn((x) => x),
     };
-    it('should load language pack for nasa-footer module ', async () => {
+    it('should load language pack for nasa-footer module', async () => {
       const langPackAsyncState = await loadModuleData({ store: fakeStore });
       expect(langPackAsyncState).toBe('I am loading the language pack for nasa-footer and my fallback locale is en-US');
       expect(fakeStore.dispatch).toHaveBeenCalledWith(langPackAsyncState);
